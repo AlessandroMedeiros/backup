@@ -1,6 +1,6 @@
 package com.all.locadora.config;
 
-import com.all.locadora.service.FilmeService;
+import com.all.locadora.service.LocadoraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Profile;
 public class Config {
 
     @Autowired
-    private FilmeService filmeService;
+    private LocadoraService locadoraService;
 
     @Bean
     public boolean populaBanco() {
-        filmeService.insereFilme();
+        locadoraService.insereBanco();
         return true;
     }
 }

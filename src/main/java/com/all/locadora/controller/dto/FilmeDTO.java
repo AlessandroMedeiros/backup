@@ -1,32 +1,20 @@
-package com.all.locadora.model;
+package com.all.locadora.controller.dto;
 
+import com.all.locadora.model.FilmeModel;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+public class FilmeDTO {
 
-@Entity
-@Table(name = "filme")
-public class FilmeModel {
-
-    public FilmeModel() {
-    }
-
-    public FilmeModel(String titulo, String diretor) {
-        this.titulo = titulo;
-        this.diretor = diretor;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    @Column(name = "titulo")
     private String titulo;
 
-    @NotNull
-    @Column(name = "diretor")
     private String diretor;
+
+    public FilmeDTO(FilmeModel filmeModel) {
+        this.id = filmeModel.getId();
+        this.titulo = filmeModel.getTitulo();
+        this.diretor = filmeModel.getDiretor();
+    }
 
     public Integer getId() {
         return id;
