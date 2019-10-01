@@ -1,0 +1,1 @@
+insert into filme values (1, 'Diretor Ale', 'titulo Ale');
