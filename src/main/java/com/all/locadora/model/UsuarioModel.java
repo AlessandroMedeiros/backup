@@ -24,6 +24,8 @@ public class UsuarioModel {
     @Column(name = "senha")
     private String senha;
 
+    public UsuarioModel() {
+    }
 
     public UsuarioModel(Integer id, String email, String nome, String senha) {
         this.id = id;
