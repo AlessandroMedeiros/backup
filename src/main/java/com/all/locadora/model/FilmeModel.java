@@ -1,12 +1,18 @@
 package com.all.locadora.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "filme")
-public class FilmeModel {
+public class FilmeModel implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     public FilmeModel() {
     }
@@ -38,6 +44,10 @@ public class FilmeModel {
     @Column(name = "quantidade")
     private int quantidade;
 
+    @JsonIgnore
+    @OneToMany(mappedBy="id.filme")
+    private Set<ItemLocacao> itens = new HashSet<>();
+
     public Integer getId() {
         return id;
     }
@@ -68,5 +78,13 @@ public class FilmeModel {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Set<ItemLocacao> getItens() {
+        return itens;
+    }
+
+    public void setItens(Set<ItemLocacao> itens) {
+        this.itens = itens;
     }
 }

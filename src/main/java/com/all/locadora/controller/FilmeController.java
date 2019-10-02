@@ -49,6 +49,7 @@ public class FilmeController {
         if(quantidadeDeFilmes>0){
             listaFilme.get().setQuantidade(quantidadeDeFilmes-1);
             filmeRepository.save(listaFilme.get());
+
             System.out.println("Filme " + listaFilme.get().getTitulo() + " alugado com sucesso!");
         }else{
             System.out.println("Quantidade de filmes esgotada!");

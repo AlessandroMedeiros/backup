@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.text.ParseException;
+
 @Configuration
 @Profile("locadora4all")
 public class Config {
@@ -14,7 +16,7 @@ public class Config {
     private LocadoraService locadoraService;
 
     @Bean
-    public boolean populaBanco() {
+    public boolean populaBanco() throws ParseException {
         locadoraService.insereBanco();
         return true;
     }
