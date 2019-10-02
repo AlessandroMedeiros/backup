@@ -16,6 +16,12 @@ public class FilmeModel {
         this.diretor = diretor;
     }
 
+    public FilmeModel(String titulo, String diretor, int quantidade) {
+        this.titulo = titulo;
+        this.diretor = diretor;
+        this.quantidade = quantidade;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,6 +33,10 @@ public class FilmeModel {
     @NotNull
     @Column(name = "diretor")
     private String diretor;
+
+    @NotNull
+    @Column(name = "quantidade")
+    private int quantidade;
 
     public Integer getId() {
         return id;
@@ -50,5 +60,13 @@ public class FilmeModel {
 
     public void setDiretor(String diretor) {
         this.diretor = diretor;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 }

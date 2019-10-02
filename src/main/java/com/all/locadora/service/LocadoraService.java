@@ -20,11 +20,11 @@ public class LocadoraService {
 
     public void insereBanco(){
 
-        FilmeModel f1 = new FilmeModel("Tropa de Elite", "José Padilha");
-        FilmeModel f2 = new FilmeModel("Matrix", "Lilly Wachowski");
-        FilmeModel f3 = new FilmeModel("Carga Explosiva", "Louis Leterrier");
-        FilmeModel f4 = new FilmeModel("Velos e Furioso desafio em Tóqui", "Justin Lin");
-        FilmeModel f5 = new FilmeModel("Missão Impossível: Protocolo Fantasma", "Brad Bird");
+        FilmeModel f1 = new FilmeModel("Tropa de Elite", "José Padilha", 0);
+        FilmeModel f2 = new FilmeModel("Matrix", "Lilly Wachowski", 1);
+        FilmeModel f3 = new FilmeModel("Carga Explosiva", "Louis Leterrier",2);
+        FilmeModel f4 = new FilmeModel("Velos e Furioso desafio em Tóqui", "Justin Lin",3);
+        FilmeModel f5 = new FilmeModel("Missão Impossível: Protocolo Fantasma", "Brad Bird",4);
         filmeRepository.saveAll(Arrays.asList(f1,f2,f3,f4,f5));
 
         UsuarioModel usu1 = new UsuarioModel("alessandro@email.com", "Alessandro", "1234");
