@@ -20,7 +20,8 @@ public class LocacaoModel implements Serializable {
     @JsonFormat(pattern="dd/MM/yyyy hh:mm")
     private Date instante;
 
-    @Column(name = "usuario")
+    @ManyToOne
+    @JoinColumn(name="usuario_id")
     private UsuarioModel usuarioModel;
 
     @OneToMany(mappedBy="id.locacao")
@@ -29,10 +30,15 @@ public class LocacaoModel implements Serializable {
     public LocacaoModel() {
     }
 
-    public LocacaoModel(Integer id, Date instante) {
+    public LocacaoModel(Integer id, Date instante, UsuarioModel usuarioModel) {
         this.id = id;
         this.instante = instante;
-        //this.usuarioModel = usuarioModel;
+        this.usuarioModel = usuarioModel;
+    }
+
+    public LocacaoModel(Date instante, UsuarioModel usuarioModel) {
+        this.instante = instante;
+        this.usuarioModel = usuarioModel;
     }
 
     public Integer getId() {

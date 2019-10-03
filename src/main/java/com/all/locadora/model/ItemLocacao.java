@@ -14,22 +14,27 @@ public class ItemLocacao  implements Serializable {
     @EmbeddedId
     private ItemLocacaoPK id = new ItemLocacaoPK();
 
-    private int quantidade;
-
     public ItemLocacao() {
     }
 
-    public ItemLocacao(LocacaoModel locacaoModel, FilmeModel filmeModel ,int quantidade) {
+    public ItemLocacao(LocacaoModel locacaoModel, FilmeModel filmeModel) {
         id.setLocacao(locacaoModel);
         id.setFilme(filmeModel);
-        this.quantidade = quantidade;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public void setLocacao(LocacaoModel locacao){
+        this.id.setLocacao(locacao);
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setFilme(FilmeModel filme){
+        this.id.setFilme(filme);
+    }
+
+    public ItemLocacaoPK getId() {
+        return id;
+    }
+
+    public void setId(ItemLocacaoPK id) {
+        this.id = id;
     }
 }

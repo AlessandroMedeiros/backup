@@ -40,29 +40,4 @@ public class FilmeController {
     public Optional<FilmeModel> listarFilmeTitulo(@PathVariable String titulo) {
         return filmeRepository.findByTitulo(titulo);
     }
-
-    @PostMapping("/{id}/locar")
-    public void locacaoFilme(@PathVariable Integer id) {
-        Optional<FilmeModel> listaFilme = filmeRepository.findById(id);
-
-        int quantidadeDeFilmes = listaFilme.get().getQuantidade();
-        if(quantidadeDeFilmes>0){
-            listaFilme.get().setQuantidade(quantidadeDeFilmes-1);
-            filmeRepository.save(listaFilme.get());
-
-            System.out.println("Filme " + listaFilme.get().getTitulo() + " alugado com sucesso!");
-        }else{
-            System.out.println("Quantidade de filmes esgotada!");
-        }
-    }
-
-    @PostMapping("/{id}/devolver")
-    public void devolucaoFilme(@PathVariable Integer id){
-        Optional<FilmeModel> listaFilme = filmeRepository.findById(id);
-
-        int quantidadeDeFilmes = listaFilme.get().getQuantidade();
-            listaFilme.get().setQuantidade(quantidadeDeFilmes+1);
-            filmeRepository.save(listaFilme.get());
-            System.out.println("Filme " + listaFilme.get().getTitulo() + " devolvido com sucesso!");
-    }
 }
