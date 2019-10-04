@@ -10,6 +10,7 @@ import com.all.locadora.repository.FilmeRepository;
 import com.all.locadora.repository.ItemLocacaoRepository;
 import com.all.locadora.repository.LocacaoRepository;
 import com.all.locadora.repository.UsuarioRepository;
+import com.all.locadora.service.exceptions.RNException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,67 +34,49 @@ public class LocadoraService {
 
     public LocacaoModel locarFilme(LocacaoDTO locacaoDTO) {
 
-        Optional<UsuarioModel> usuarioModel = usuarioRepository.findById(locacaoDTO.getIdUsuario());
-        LocacaoModel locacaoModel = new LocacaoModel();
-        if (usuarioModel.isPresent()) {
-            UsuarioModel usuario = usuarioModel.get();
-            Optional<FilmeModel> filmeModel = filmeRepository.findById(locacaoDTO.getIdFilme());
-            if (filmeModel.isPresent()) {
-                FilmeModel filme = filmeModel.get();
-                if (verificarDisponibilidadeFilme(filme)) {
+        UsuarioModel usuario = usuarioRepository.findById(locacaoDTO.getIdUsuario()).get();
+        LocacaoModel locacao = new LocacaoModel();
+        FilmeModel filme = filmeRepository.findById(locacaoDTO.getIdFilme()).get();
 
-                    atualizarDisponibilidades(filme, false);
-
-                    locacaoModel.setId(null);
-                    locacaoModel.setUsuarioModel(usuario);
-                    locacaoModel.setData(new Date());
-
-                    locacaoRepository.save(locacaoModel);
-
-                    ItemLocacao itemLocacao = new ItemLocacao();
-                    itemLocacao.setFilme(filme);
-                    itemLocacao.setLocacao(locacaoModel);
-                    locacaoModel.getItens().add(itemLocacao);
-                    itemLocacaoRepository.saveAll(locacaoModel.getItens());
-                } else {
-                    System.out.println("Quantidade de filmes igual a ZERO!!");
-                }
-            }
-        }
-        return locacaoModel;
-    }
-
-    public LocacaoModel devolverFilme(DevolucaoDTO devolucaoDTO) {
-        Optional<LocacaoModel> locacaoModel = locacaoRepository.findById(devolucaoDTO.getIdLocacao());
-
-        if (locacaoModel.isPresent()) {
-            LocacaoModel locacao = locacaoModel.get();
-
-            if (locacao.getUsuarioModel().getId().equals(devolucaoDTO.getIdUsuario())) {
-
-                for (ItemLocacao itemLocacao : locacao.getItens()) {
-                    Optional<FilmeModel> filmeModel = filmeRepository.findById(itemLocacao.getId().getFilme().getId());
-                    filmeModel.ifPresent(filme -> {
-                        atualizarDisponibilidades(filme, true);
-                        filmeRepository.save(filme);
-                    });
-                    locacao.getItens().remove(itemLocacao);
-                    itemLocacaoRepository.delete(itemLocacao);
-                }
-                locacaoRepository.delete(locacao);
-            }
+        if (verificarDisponibilidadeFilme(filme)) {
+            atualizarDisponibilidades(filme, false);
+            locacao.setId(null);
+            locacao.setUsuarioModel(usuario);
+            locacao.setData(new Date());
+            locacao = locacaoRepository.save(locacao);
+            ItemLocacao itemLocacao = new ItemLocacao();
+            itemLocacao.setFilme(filme);
+            itemLocacao.setLocacao(locacao);
+            locacao.getItens().add(itemLocacao);
+            itemLocacaoRepository.saveAll(locacao.getItens());
             return locacao;
         }
-        return null;
+        throw new RNException("Filme indisponivel. Todas as cópias foram locadas");
     }
 
-    private void atualizarDisponibilidades(FilmeModel filme, boolean incrementa) {
-        if (incrementa) {
+
+    public LocacaoModel devolverFilme(DevolucaoDTO devolucaoDTO) {
+        LocacaoModel locacao = locacaoRepository.findById(devolucaoDTO.getIdLocacao()).get();
+        if (locacao.getUsuarioModel().getId().equals(devolucaoDTO.getIdUsuario())) {
+            for (ItemLocacao itemLocacao : locacao.getItens()) {
+                FilmeModel filme = filmeRepository.findById(itemLocacao.getId().getFilme().getId()).get();
+                atualizarDisponibilidades(filme, true);
+                filmeRepository.save(filme);
+                locacao.getItens().remove(itemLocacao);
+                itemLocacaoRepository.delete(itemLocacao);
+            }
+            locacaoRepository.delete(locacao);
+            return locacao;
+        }throw new RNException("Locação não pertence a esse usuário. Devolução não realizada.");
+    }
+
+
+    private void atualizarDisponibilidades(FilmeModel filme, boolean devolucao) {
+        if (devolucao) {
             filme.setQuantidade(filme.getQuantidade() + 1);
         } else {
             filme.setQuantidade(filme.getQuantidade() - 1);
         }
-
         filmeRepository.save(filme);
     }
 

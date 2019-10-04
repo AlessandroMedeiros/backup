@@ -41,7 +41,7 @@ public class BancoDadosService {
         FilmeModel f5 = new FilmeModel("Missão Impossível: Protocolo Fantasma", "Brad Bird", 5);
         filmeRepository.saveAll(Arrays.asList(f1, f2, f3, f4, f5));
 
-        UsuarioModel usu1 = new UsuarioModel("alessandro@email.com", "Alessandro", "1234");
+        UsuarioModel usu1 = new UsuarioModel("alessandro@email.com", "Alessandro", "$2a$10$1fDOld8RXSGCd8K/ozFdFuGr5g6DU9240b0bysJwy8GA9yHY6.z.q");
         UsuarioModel usu2 = new UsuarioModel("anderson@email.com", "Anderson", "andi");
         UsuarioModel usu3 = new UsuarioModel("andre@email.com", "Andre", "dede");
         usuarioRepository.saveAll(Arrays.asList(usu1, usu2, usu3));

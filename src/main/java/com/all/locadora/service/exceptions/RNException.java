@@ -10,7 +10,4 @@ public class RNException extends RuntimeException {
     public RNException(String msg, Throwable cause) {
         super(msg, cause);
     }
-
-    public RNException() {
-    }
 }

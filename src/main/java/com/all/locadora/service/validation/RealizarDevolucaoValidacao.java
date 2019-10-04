@@ -52,7 +52,11 @@ public class RealizarDevolucaoValidacao implements ConstraintValidator<RealizarD
             list.add(new FieldMessage("idLocacao", "Locacao não encontrada"));
         }
 
-
+        for (FieldMessage e : list) {
+            context.disableDefaultConstraintViolation();
+            context.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())
+                    .addConstraintViolation();
+        }
 
         return list.isEmpty();
     }
