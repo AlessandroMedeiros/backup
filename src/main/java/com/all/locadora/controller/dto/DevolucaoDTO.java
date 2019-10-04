@@ -1,5 +1,8 @@
 package com.all.locadora.controller.dto;
 
+import com.all.locadora.service.validation.RealizarDevolucao;
+
+@RealizarDevolucao
 public class DevolucaoDTO {
 
     private Integer idUsuario;

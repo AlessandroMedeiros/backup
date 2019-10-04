@@ -1,6 +1,9 @@
 package com.all.locadora.controller.dto;
 
 
+import com.all.locadora.service.validation.RealizarLocacao;
+
+@RealizarLocacao
 public class LocacaoDTO {
 
     private Integer idUsuario;

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -19,7 +20,7 @@ public class LocadoraController {
     LocadoraService locadoraService;
 
     @PostMapping("/locar")
-    public ResponseEntity<LocacaoModel> locacaoFilme(@RequestBody LocacaoDTO locacaoDTO) {
+    public ResponseEntity<LocacaoModel> locacaoFilme(@RequestBody @Valid LocacaoDTO locacaoDTO) {
         LocacaoModel locacaoModel = locadoraService.locarFilme(locacaoDTO);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -28,7 +29,7 @@ public class LocadoraController {
     }
 
     @PostMapping("/devolver")
-    public ResponseEntity<LocacaoModel> devolucaoFilme(@RequestBody DevolucaoDTO devolucaoDTO) {
+    public ResponseEntity<LocacaoModel> devolucaoFilme(@RequestBody @Valid DevolucaoDTO devolucaoDTO) {
         LocacaoModel locacaoModel = locadoraService.devolverFilme(devolucaoDTO);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
