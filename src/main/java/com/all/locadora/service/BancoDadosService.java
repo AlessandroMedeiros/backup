@@ -42,8 +42,9 @@ public class BancoDadosService {
         filmeRepository.saveAll(Arrays.asList(f1,f2,f3,f4,f5));
 
         UsuarioModel usu1 = new UsuarioModel("alessandro@email.com", "Alessandro", "1234");
-        UsuarioModel usu2 = new UsuarioModel("joao@email.com", "Joao", "jojo");
-        usuarioRepository.saveAll(Arrays.asList(usu1,usu2));
+        UsuarioModel usu2 = new UsuarioModel("anderson@email.com", "Anderson", "andi");
+        UsuarioModel usu3 = new UsuarioModel("andre@email.com", "Andre", "dede");
+        usuarioRepository.saveAll(Arrays.asList(usu1,usu2, usu3));
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         LocacaoModel locacao1 = new LocacaoModel(sdf.parse("03/10/2019 10:46"), usu1);

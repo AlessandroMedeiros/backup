@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,27 +18,27 @@ public class LocacaoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @JsonFormat(pattern="dd/MM/yyyy hh:mm")
-    private Date instante;
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+    private Date data;
 
     @ManyToOne
-    @JoinColumn(name="usuario_id")
+    @JoinColumn(name = "usuario_id")
     private UsuarioModel usuarioModel;
 
-    @OneToMany(mappedBy="id.locacao")
+    @OneToMany(mappedBy = "id.locacao")
     private Set<ItemLocacao> itens = new HashSet<>();
 
     public LocacaoModel() {
     }
 
-    public LocacaoModel(Integer id, Date instante, UsuarioModel usuarioModel) {
+    public LocacaoModel(Integer id, Date data, UsuarioModel usuarioModel) {
         this.id = id;
-        this.instante = instante;
+        this.data = data;
         this.usuarioModel = usuarioModel;
     }
 
-    public LocacaoModel(Date instante, UsuarioModel usuarioModel) {
-        this.instante = instante;
+    public LocacaoModel(Date data, UsuarioModel usuarioModel) {
+        this.data = data;
         this.usuarioModel = usuarioModel;
     }
 
@@ -49,12 +50,12 @@ public class LocacaoModel implements Serializable {
         this.id = id;
     }
 
-    public Date getInstante() {
-        return instante;
+    public Date getData() {
+        return data;
     }
 
-    public void setInstante(Date instante) {
-        this.instante = instante;
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public UsuarioModel getUsuarioModel() {

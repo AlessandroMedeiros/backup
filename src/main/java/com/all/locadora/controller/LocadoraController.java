@@ -1,5 +1,6 @@
 package com.all.locadora.controller;
 
+import com.all.locadora.controller.dto.DevolucaoDTO;
 import com.all.locadora.controller.dto.LocacaoDTO;
 import com.all.locadora.model.LocacaoModel;
 import com.all.locadora.service.LocadoraService;
@@ -26,11 +27,12 @@ public class LocadoraController {
         return ResponseEntity.created(uri).build();
     }
 
-    @PostMapping("/{id}/devolver")
-    public void devolucaoFilme(@PathVariable LocacaoDTO locacaoDTO) {
-        LocacaoModel locacaoModel = locadoraService.devolverFilme(locacaoDTO);
+    @PostMapping("/devolver")
+    public ResponseEntity<LocacaoModel> devolucaoFilme(@RequestBody DevolucaoDTO devolucaoDTO) {
+        LocacaoModel locacaoModel = locadoraService.devolverFilme(devolucaoDTO);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(locacaoModel.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 }
