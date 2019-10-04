@@ -1,6 +1,5 @@
 package com.all.locadora.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -45,7 +44,7 @@ public class FilmeModel implements Serializable {
     private int quantidade;
 
     @JsonIgnore
-    @OneToMany(mappedBy="id.filme")
+    @OneToMany(mappedBy = "id.filme")
     private Set<ItemLocacao> itens = new HashSet<>();
 
     public Integer getId() {

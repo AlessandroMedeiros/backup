@@ -58,8 +58,7 @@ public class LocadoraService {
                     itemLocacao.setLocacao(locacaoModel);
                     locacaoModel.getItens().add(itemLocacao);
                     itemLocacaoRepository.saveAll(locacaoModel.getItens());
-                }
-                else{
+                } else {
                     System.out.println("Quantidade de filmes igual a ZERO!!");
                 }
             }
@@ -70,12 +69,12 @@ public class LocadoraService {
     public LocacaoModel devolverFilme(DevolucaoDTO devolucaoDTO) {
         Optional<LocacaoModel> locacaoModel = locacaoRepository.findById(devolucaoDTO.getIdLocacao());
 
-        if(locacaoModel.isPresent()){
+        if (locacaoModel.isPresent()) {
             LocacaoModel locacao = locacaoModel.get();
 
-            if(locacao.getUsuarioModel().getId().equals(devolucaoDTO.getIdUsuario())){
+            if (locacao.getUsuarioModel().getId().equals(devolucaoDTO.getIdUsuario())) {
 
-                for(ItemLocacao itemLocacao: locacao.getItens()){
+                for (ItemLocacao itemLocacao : locacao.getItens()) {
                     Optional<FilmeModel> filmeModel = filmeRepository.findById(itemLocacao.getId().getFilme().getId());
                     filmeModel.ifPresent(filme -> {
                         atualizarDisponibilidades(filme, true);
@@ -86,17 +85,16 @@ public class LocadoraService {
                 }
                 locacaoRepository.delete(locacao);
             }
-
             return locacao;
         }
         return null;
     }
 
     private void atualizarDisponibilidades(FilmeModel filme, boolean incrementa) {
-        if(incrementa){
-            filme.setQuantidade(filme.getQuantidade()+1);
-        }else{
-            filme.setQuantidade(filme.getQuantidade()-1);
+        if (incrementa) {
+            filme.setQuantidade(filme.getQuantidade() + 1);
+        } else {
+            filme.setQuantidade(filme.getQuantidade() - 1);
         }
 
         filmeRepository.save(filme);

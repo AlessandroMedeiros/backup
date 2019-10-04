@@ -36,15 +36,15 @@ public class BancoDadosService {
 
         FilmeModel f1 = new FilmeModel("Tropa de Elite", "José Padilha", 1);
         FilmeModel f2 = new FilmeModel("Matrix", "Lilly Wachowski", 2);
-        FilmeModel f3 = new FilmeModel("Carga Explosiva", "Louis Leterrier",3);
-        FilmeModel f4 = new FilmeModel("Velos e Furioso desafio em Tóqui", "Justin Lin",4);
-        FilmeModel f5 = new FilmeModel("Missão Impossível: Protocolo Fantasma", "Brad Bird",5);
-        filmeRepository.saveAll(Arrays.asList(f1,f2,f3,f4,f5));
+        FilmeModel f3 = new FilmeModel("Carga Explosiva", "Louis Leterrier", 3);
+        FilmeModel f4 = new FilmeModel("Velos e Furioso desafio em Tóqui", "Justin Lin", 4);
+        FilmeModel f5 = new FilmeModel("Missão Impossível: Protocolo Fantasma", "Brad Bird", 5);
+        filmeRepository.saveAll(Arrays.asList(f1, f2, f3, f4, f5));
 
         UsuarioModel usu1 = new UsuarioModel("alessandro@email.com", "Alessandro", "1234");
         UsuarioModel usu2 = new UsuarioModel("anderson@email.com", "Anderson", "andi");
         UsuarioModel usu3 = new UsuarioModel("andre@email.com", "Andre", "dede");
-        usuarioRepository.saveAll(Arrays.asList(usu1,usu2, usu3));
+        usuarioRepository.saveAll(Arrays.asList(usu1, usu2, usu3));
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         LocacaoModel locacao1 = new LocacaoModel(sdf.parse("03/10/2019 10:46"), usu1);

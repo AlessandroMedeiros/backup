@@ -1,6 +1,5 @@
 package com.all.locadora.controller.dto;
 
-import com.all.locadora.model.UsuarioModel;
 
 public class LocacaoDTO {
 
