@@ -33,7 +33,7 @@ public class UsuarioModel implements Serializable, UserDetails {
     private String senha;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Perfil> perfis = new ArrayList<>();
+    private List<PerfilModel> perfis = new ArrayList<>();
 
     public UsuarioModel() {
     }
