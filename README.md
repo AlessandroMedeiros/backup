@@ -12,4 +12,4 @@ para adicionar um usuário, método POST, acesse o link
 conforme imagem abaixo:
 
 
-<img src="https://imgur.com/i270Z0E.png">
+<img src="https://imgur.com/QrE11jw.png" width="1240" height="800">
