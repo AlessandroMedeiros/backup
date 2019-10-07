@@ -41,13 +41,12 @@ public class BancoDadosService {
         FilmeModel f5 = new FilmeModel("Missão Impossível: Protocolo Fantasma", "Brad Bird", 5);
         filmeRepository.saveAll(Arrays.asList(f1, f2, f3, f4, f5));
 
-        UsuarioModel usu1 = new UsuarioModel("alessandro@email.com", "Alessandro", "$2a$10$1fDOld8RXSGCd8K/ozFdFuGr5g6DU9240b0bysJwy8GA9yHY6.z.q");
-        UsuarioModel usu2 = new UsuarioModel("anderson@email.com", "Anderson", "andi");
-        UsuarioModel usu3 = new UsuarioModel("andre@email.com", "Andre", "dede");
-        usuarioRepository.saveAll(Arrays.asList(usu1, usu2, usu3));
+        UsuarioModel usu1 = new UsuarioModel("alessandro@email.com", "Alessandro", "$2a$10$zWQB61/1odfUFGe42t.unO/WiOFl04wPQPFSlB0xsz72cw9nfNHsm");
+        UsuarioModel usu2 = new UsuarioModel("aline@email.com", "Aline", "$2a$10$ldkv1viUjXxy.wr.LrTKYOC2cX2Nv7OMJPrXXmbFWDBuNjjWUAM7y");
+        usuarioRepository.saveAll(Arrays.asList(usu1, usu2));
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        LocacaoModel locacao1 = new LocacaoModel(sdf.parse("03/10/2019 10:46"), usu1);
+        LocacaoModel locacao1 = new LocacaoModel(sdf.parse("03/10/2019 14:11"), usu1);
         LocacaoModel locacao2 = new LocacaoModel(sdf.parse("03/10/2019 14:11"), usu2);
 
         List<LocacaoModel> loc = locacaoRepository.saveAll(Arrays.asList(locacao1, locacao2));

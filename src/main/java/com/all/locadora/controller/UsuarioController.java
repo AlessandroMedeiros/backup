@@ -4,6 +4,7 @@ import com.all.locadora.controller.dto.NovoUsuarioDTO;
 import com.all.locadora.controller.dto.UsuarioDTO;
 import com.all.locadora.model.UsuarioModel;
 import com.all.locadora.repository.UsuarioRepository;
+import com.all.locadora.security.CriptografarSenhaUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,8 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> cadastrar(@RequestBody NovoUsuarioDTO novoUsuarioDTO) {
-        UsuarioModel usuarioModel = new UsuarioModel(novoUsuarioDTO.getId(), novoUsuarioDTO.getEmail(), novoUsuarioDTO.getNome(), novoUsuarioDTO.getSenha());
+        String senhaCriptografada = new CriptografarSenhaUsuario().criptrografarSenha(novoUsuarioDTO.getSenha());
+        UsuarioModel usuarioModel = new UsuarioModel(novoUsuarioDTO.getId(), novoUsuarioDTO.getEmail(), novoUsuarioDTO.getNome(), senhaCriptografada);
         usuarioModel = usuarioRepository.save(usuarioModel);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuarioModel.getId()).toUri();
         return ResponseEntity.created(uri).body(new UsuarioDTO(usuarioModel));

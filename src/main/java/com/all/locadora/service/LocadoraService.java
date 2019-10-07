@@ -35,8 +35,8 @@ public class LocadoraService {
     public LocacaoModel locarFilme(LocacaoDTO locacaoDTO) {
 
         UsuarioModel usuario = usuarioRepository.findById(locacaoDTO.getIdUsuario()).get();
-        LocacaoModel locacao = new LocacaoModel();
         FilmeModel filme = filmeRepository.findById(locacaoDTO.getIdFilme()).get();
+        LocacaoModel locacao = new LocacaoModel();
 
         if (verificarDisponibilidadeFilme(filme)) {
             atualizarDisponibilidades(filme, false);
