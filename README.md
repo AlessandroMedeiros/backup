@@ -8,6 +8,9 @@ Após rodar o scrip locadora.sql e subir o projeto, acess o link para verificar 
 
 Após verificar os endpoints, acesse para verificar os usuários, método GET:
 <a href="http://localhost:8081/usuarios">http://localhost:8081/usuarios</a>
+como mostra imagem abaixo:
+
+<img src="https://imgur.com/FRms4Mz">
 
 para adicionar um usuário, método POST, acesse o link
 <a href="http://localhost:8081/usuarios">http://localhost:8081/usuarios</a> 
