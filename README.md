@@ -11,4 +11,5 @@ para adicionar um usuário, método POST, acesse o link
 <a href="http://localhost:8081/usuarios">http://localhost:8081/usuarios</a> 
 conforme imagem abaixo:
 
-<a href="https://uploaddeimagens.com.br/imagens/cadastrarusuario-png">https://uploaddeimagens.com.br/imagens/cadastrarusuario-png<a/>
+
+<img src="https://uploaddeimagens.com.br/imagens/cadastrarusuario-png" alt="Cadastrar usuário."/></a>
