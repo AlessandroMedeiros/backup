@@ -12,4 +12,4 @@ para adicionar um usuário, método POST, acesse o link
 conforme imagem abaixo:
 
 
-<a href="https://uploaddeimagens.com.br/imagens/cadastrarusuario-png"><img src="https://uploaddeimagens.com.br/imagens/cadastrarusuario-png" alt="Cadastrar usuário."/></a>
+<img src="https://imgur.com/i270Z0E.png">
