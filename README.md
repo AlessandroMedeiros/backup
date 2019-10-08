@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
 <b>Bem-vindo ao sistema de locadora de filmes!</b>
 <br>
 Após rodar o scrip locadora.sql e subir o projeto local, acesse o link para verificar a documentação da api.
@@ -87,9 +94,11 @@ como mostra imagem abaixo:
 <p>
 	Pra listar um filme específico, acesse
 	<br>
-	<a href="localhost:8081/filmes/Matrix/pesquisar">localhost:8081/filmes/Matrix/pesquisar</a>
+	<a href="http://localhost:8081/filmes/Matrix/pesquisar">http://localhost:8081/filmes/Matrix/pesquisar</a>
 	<br>
 	como mostra na imagem abaixo:
 	<br>
 	<img src="https://imgur.com/AIIIrWG.png">
 </p>
+
+
