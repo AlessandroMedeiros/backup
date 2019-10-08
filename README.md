@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
 <b>Bem-vindo ao sistema de locadora de filmes!</b>
 <br>
 Após rodar o scrip locadora.sql e subir o projeto local, acesse o link para verificar a documentação da api.
