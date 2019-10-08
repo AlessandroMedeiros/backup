@@ -12,7 +12,7 @@ Após rodar o scrip locadora.sql e subir o projeto local, acesse o link para ver
 <a href="http://localhost:8081/swagger-ui.html">http://localhost:8081/swagger-ui.html</a>
 <br>
 <p>
-	<img src="https://imgur.com/QrE11jw.png" width="1240" height="800"/>
+	<img src="https://imgur.com/vVviWne.png"/>
 </p>
 <br>
 
